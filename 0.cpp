@@ -11,6 +11,7 @@ int main(int argc, char *argv[]){
 	int secondNumber=0;//placeholder for sub and div
 
 	for(int i=1;i<argc;i++){//traverse all values on the command line
+		
 		string temp = string(argv[i]);//converts all values to string
 		if(temp == "+") results.push(results.pop() + results.pop());//perform add
 		else if(temp == "-"){//if a sub is found
@@ -24,7 +25,7 @@ int main(int argc, char *argv[]){
 			firstNumber = results.pop();//store the second pop in a variable
 			results.push(firstNumber / secondNumber);//push the result back onto the stack
 		}
-		else results.push(stoi(temp));//if a number is found store the integer on stack
+		else results.push(atoi(argv[i]));//if a number is found store the integer on stack
 	}
 
 	cout<<results.pop()<<endl;//print out the final value
