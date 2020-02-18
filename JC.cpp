@@ -20,8 +20,9 @@ int main(int argc, char* argv[]){
 	}
 	t->next = x;
 	while(t != t->next){
-		for(i = 1; i<M; i++){}
-		t = t->next;
+		for(i = 1; i<M; i++){
+			t = t->next;
+		}
 		cout << t->next->key<<" has dropped out "<< endl;
 		x = t->next;
 		t->next = x->next;

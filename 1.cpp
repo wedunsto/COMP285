@@ -1,5 +1,7 @@
 //Programming assignment 1: Problem 1:
 #include<iostream>
+#include"cstdlib"
+
 using namespace std;
 
 int arrayRow;//keep track of array row

@@ -4,14 +4,13 @@
 using namespace std;
 
 void Kill(Node *head, Node *dead, int node){
-	cout<<"Test"<<endl;
-	if(head == NULL) return;
-	if(head -> next == head) return;
-	head = head -> next;
-	cout<<head->next->key<<" has died"<<endl;
-	dead = head -> next;
-	head -> next = dead -> next;
-	delete dead;
+	if(head == NULL) return;//if empty linked list
+	if(head -> next == head) return;//if the linked list has wrapped around
+	head = head -> next;//rotate to next node in linked list
+	cout<<head->next->key<<" has died"<<endl;//report the node being removed
+	//dead = head -> next;//store the removed node
+	//head -> next = dead -> next;//point the head to the next live node
+	//delete dead;//delete the head node
 	Kill(head,dead,node+1);
 }
 
