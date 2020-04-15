@@ -5,8 +5,6 @@ using namespace std;
 #include<cmath>
 #include <fstream>
 
-ofstream fout("permutations.txt");
-
 string stringVersionOfDigit(int n){
 	if (n == 0){
 		return "0";
@@ -45,47 +43,15 @@ string itos(int number, string result){
 	return itos(number/10,stringVersionOfDigit(number % 10) + result);
 }
 
-/*string itos(int number){//method used to convert int values to string
-	string result = "";
-	while(n / 10 != 0){
-		result = stringVersionOfDigit(number%10) + result;
-		number /= 10;
-	}
-	result = stringVersionOfDigit(number%10) + result;
-	return result;
-
-}*/
-
 int Convert(int number, int binaryResult, int power){
 	if(number == 0) return binaryResult;
 	return Convert(number/2, number%2*(int)pow(10,power), power++);
 } 
-
-/*string convert(int number){//converts the size of the password to binary
-	int power = 0;
-	int binaryResult = 0;
-	while(number != 0){
-		binaryResult += number %2*(int)pow(10,power);
-		number /= 2;
-		power++;
-	}
-	return binaryResult;
-}*/
-
 int CountTheOnes(int number, int count){
 	if(number == 0) return count;
 	if(number%10 == 1) count++;
 	return CountTheOnes(number/10,count);
 }
-
-/*int CountTheOnes(int number){
-	int count = 0;
-	while(number != 0){
-		if(number % 10 == 1) count++;
-	n /= 10;
-	}
-	return count;
-}*/
 
 void FirstPart(int arr[], int size, int &nextIndex){
 	nextIndex = 0;
@@ -137,7 +103,7 @@ long Factorial(int number) {
     return results;
 }
 
-void permute(int arr[], number) {
+void permute(int arr[],int number) {
 	int arra[10];
 	Begin(arra, number);
 	int i, j, y, permuted = 0;
@@ -156,73 +122,68 @@ void permute(int arr[], number) {
     }
 }
 
+ofstream fout("solutions.txt");
+
 int main(int argc, char* argv[]){
 	int binaryResult = 0;
 	int power = 0;
 	int lowest=0;
 	int highest=0;
 	int count = 0;
-	cout<<"yes"<<endl;
-if (argc > 1) {
-        int passwordLength = atoi(argv[1]);
-        int variations = Factorial(passwordLength);
-	int *variationsArr = new int[variations];
-	permute(variationsArr, passwordLength);
-	fout.close();
+	string results = "";
 
-        for (int i = 0; i < k; i++) {
-            lowest += (int) pow(2, i);
-        }
-        for (int i = 9; i > (9 - k); i--) {
-            highest += (int) pow(2, i);
-        }
+	if (argc > 1) {
+		int passwordLength = atoi(argv[1]);
+		int variations = Factorial(passwordLength);
+		int *variationsArr = new int[variations];
+		permute(variationsArr, passwordLength);
+		fout.close();
 
-	int *subsetArr = new int[passwordLength];
+		for (int i = 0; i < passwordLength; i++) {
+			lowest += (int) pow(2, i);
+        	}
+        	for (int i = 9; i > (9 - passwordLength); i--) {
+            		highest += (int) pow(2, i);
+        	}
 
-	for (int i = lowest; i <= highest; i++) {
-		int sub = Convert(i,binaryResult,power);
-            if (countTheOnes(sub,count) == k) {
-                int i = 0;
-                int value = 0;
-                while (sub != 0) {
-                    if (sub % 10 == 1) {
-                        subsetArr[i] = value;
-                        i++;
-                    }
-                    sub = sub / 10;
-                    value++;
-                }
-	ifstream fin("permutations.txt");                
-		for (int j = 0; j < numPermutations; j++) {
-			char input[3];
-			fin >> input;
-		int tempPermutation = atoi(input);
-                    
-		string password = "";
-		for (int h = 0; h < k; h++) {
-			int permuteIndex = tempPermutation % 10;
-			tempPermutation = tempPermutation / 10;
-                        password = itos(subsetArray[permuteIndex]) + password;
+		int *subsetArr = new int[passwordLength];
+
+		for (int i = lowest; i <= highest; i++) {
+			int sub = Convert(i,binaryResult,power);
+            		if (CountTheOnes(sub,count) == passwordLength) {
+                		int i, value = 0;
+                		while (sub != 0) {
+                    			if (sub % 10 == 1) {
+                        			subsetArr[i] = value;
+                        			i++;
+                    			}
+                    			sub = sub / 10;
+                    			value++;
+                		}
+			}
+			ifstream read("solutions.txt");
+			for (int j = 0; j < variations; j++) {
+				char input[3];
+				read >> input;
+				int temp = atoi(input);
+				string password = "";
+				for (int h = 0; h < passwordLength; h++) {
+					int index = temp % 10;
+					temp = temp / 10;
+                        		password = itos(subsetArr[index],results) + password;
+				}
+				const char* potential = password.c_str();
+				char *answer = (char*)potential;
+
+				if(pass(answer)==0){
+					cout <<"Found password = "<<password <<endl;
+                		}
+			}
+			read.close();
 		}
-		const char* b = password.c_str();
-		char * c = (char*)b;
-		if(pass(c)==0){
-			cout << "Correct Password: "<<password <<endl;
-                }
-                }
-fin.close();
-            }
-        }
-    }
+	}
 	return 0;
 }
-
-
-
-
-
-
-
 
 
 
