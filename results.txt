@@ -1,0 +1,5 @@
+Shortest path from A to: B is: 18
+Shortest path from A to: C is: 13
+Shortest path from A to: D is: 20
+Shortest path from A to: E is: 15
+Shortest path from A to: F is: 8
