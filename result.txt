@@ -1,0 +1,4 @@
+Shortest path from A to B is: 22
+Path taken: AGFB
+Shortest path from A to C is: 0
+Path taken: 

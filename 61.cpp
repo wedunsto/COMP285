@@ -159,7 +159,7 @@ int main()
 	}
 
 	myReadFile.close();
-	//g.printGraph();
+	g.printGraph();
 	g.dijkstraFromA();
 	return 0;
 }

@@ -15,6 +15,17 @@ int powerSetSize(int set_size){//Obtains the set of power set
 	return pow(2,set_size);	
 }
 
+int toBinary(int n) {
+    int power = 0;
+    int binary = 0;
+    while (n != 0) {
+        binary += n % 2 * (int) pow(10, power);
+        n = n / 2;
+        power++;
+    }
+    return binary;
+}
+
 int main(int argc, char* argv[]){
 	int currentAttempt = 0;//stores the current attempt number
 	//incremented everytime the program guesses a password
@@ -25,6 +36,6 @@ int main(int argc, char* argv[]){
 	int power_set_size = powerSetSize(passwordLength);//maybe incorrect
 	
 	if(currentAttempt > maxAttempts) cout<<"Failure"<<endl;
-
+	cout<<toBinary(20)<<endl;
 
 }
